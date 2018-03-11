@@ -1,0 +1,16 @@
+# Don't to upload the cache
+/packer_cache
+
+# This hidden directory is kind of annoying
+/.vagrant
+
+# Obviously don't want to upload the uncompressed vagrant box
+# Cable modem can't provide enough uplink bandwidth :(
+/Fedora27
+
+# Don't want to upload the compressed vagrant box either
+Fedora27WS.box
+
+# Files not used - yet
+scripts/optimize.sh
+scripts/provisioners.sh

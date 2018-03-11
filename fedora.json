@@ -1,0 +1,54 @@
+{
+  "builders": [
+    {
+      "type": "hyperv-iso",
+      "vm_name": "fedora27",
+      "temp_path": ".",
+      "iso_urls": [
+        "{{ user `iso_disk` }}",
+        "{{ user `iso_url`}}"
+      ],
+      "iso_checksum_type": "{{user `iso_checksum_type`}}",
+      "iso_checksum": "{{user `iso_checksum`}}",
+      "disk_size": 81920,
+      "communicator": "ssh",
+      "ssh_username": "root",
+      "ssh_password": "vagrant",
+      "ssh_timeout" : "4h",
+      "shutdown_timeout": "30m",
+      "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
+      "ram_size": 4096,
+      "enable_mac_spoofing": "true",
+      "enable_dynamic_memory": "false",
+      "enable_virtualization_extensions": "true",
+      "cpu": 2,
+      "generation": 2,
+      "switch_name": "{{user `switch_name`}}",
+      "vlan_id": "{{user `vlan_id`}}",
+      "boot_wait": "5s",
+      "guest_additions_mode": "disable",
+      "enable_secure_boot": false,
+      "output_directory": "Fedora27"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+      "script": "scripts/packages.sh"
+    },
+    {
+      "type": "shell",
+      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+      "script": "scripts/vagrantSSH.sh"
+    }
+  ],
+  "variables": {
+    "iso_disk": "Fedora-Workstation-Live-x86_64-27-1.6.iso",
+    "iso_url": "https://mirror.cs.siue.edu/pub/fedora/linux/releases/27/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-27-1.6.iso",
+    "iso_checksum_type": "sha256",
+    "iso_checksum": "d242345fa6b5f8cc80e2317c46d15bb1fc4ad70b9a3516c9bc2fb6f3599c8117",
+    "switch_name": "LANBridge",
+    "vlan_id": ""
+  }
+}
