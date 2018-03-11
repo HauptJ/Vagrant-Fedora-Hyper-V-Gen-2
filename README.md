@@ -43,4 +43,4 @@ packer build -force fedora.json
 ```
 
 Screenshot of VirtualBox running in a Hyper-V VM:
-![alt text](https://github.com/HauptJ/Vagrant-Fedora-Hyper-V-Gen-2.png "Screenshot")
+![Screenshot](https://raw.githubusercontent.com/HauptJ/Vagrant-Fedora-Hyper-V-Gen-2/master/Capture.PNG "Screenshot")
