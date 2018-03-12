@@ -2,7 +2,7 @@
   "builders": [
     {
       "type": "hyperv-iso",
-      "vm_name": "fedora27",
+      "vm_name": "Fedora27WS",
       "temp_path": ".",
       "iso_urls": [
         "{{ user `iso_disk` }}",
@@ -10,7 +10,7 @@
       ],
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "iso_checksum": "{{user `iso_checksum`}}",
-      "disk_size": 81920,
+      "disk_size": 163840,
       "communicator": "ssh",
       "ssh_username": "root",
       "ssh_password": "vagrant",
@@ -28,7 +28,7 @@
       "boot_wait": "5s",
       "guest_additions_mode": "disable",
       "enable_secure_boot": false,
-      "output_directory": "Fedora27"
+      "output_directory": "Fedora27WS"
     }
   ],
   "provisioners": [

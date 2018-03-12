@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "hauptj/Fedora27WS"
-  config.vm.box_url = "file://Fedora27WS.box"
+  # config.vm.box_url = "file://Fedora27WS.box"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -61,10 +61,10 @@ Vagrant.configure("2") do |config|
 
 	config.vm.provider "hyperv" do |hv|
 		hv.vmname = "Fedora27WS"
-    # With nested virtualization at least 2 CPUs are needed
-		hv.cpus = "6"
-    # With nested virtualization at least 4GB of memory is needed
-		hv.memory = "20480"
+		# With nested virtualization at least 2 CPUs are needed
+		hv.cpus = "2"
+		# With nested virtualization at least 4GB of memory is needed
+		hv.memory = "4096"
 	end
 
   # View the documentation for the provider you are using for more
@@ -75,11 +75,11 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
     config.vm.provision "shell", inline: <<-SHELL
 		dnf update -y
-    # permit password authentication
+		# permit password authentication
 		sed -i "s/.*PasswordAuthentication.*/PasswordAuthentication yes/g" /etc/ssh/sshd_config
-    # permit root login
-    sed -i "s/.*PermitRootLogin.*/PermitRootLogin no/g" /etc/ssh/sshd_config
-    # restart sshd
+		# permit root login
+		sed -i "s/.*PermitRootLogin.*/PermitRootLogin no/g" /etc/ssh/sshd_config
+		# restart sshd
 		systemctl restart sshd.service
     SHELL
 end
